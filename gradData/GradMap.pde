@@ -41,32 +41,51 @@ public class GradMap {
     String majorCategoryLowercase=majorCategory.toLowerCase();
     for (String s : theRealMap.keySet()) {
       String category=theRealMap.get(s).get(0);
-      if (category.equals(majorCategoryLowercase)) { //something wrong with this
+      if (category.equals(majorCategoryLowercase)) {
         String sal=theRealMap.get(s).get(2);
         int addThisSal=parseInt(sal);
         totalSal+=addThisSal;
         salCount++;
       }
     }
-    if(salCount!=0){
-    avSal=(totalSal/salCount);
+    if (salCount!=0) {
+      avSal=(totalSal/salCount);
     }
     return avSal;
   }
-  public Set getCategorySet(){
+  public float averageRatio(String majorCategory) {
+    float avRatio=0;
+    float totalRatio=0;
+    float ratioCount=0;
+    String majorCategoryLowercase=majorCategory.toLowerCase();
+    for (String s : theRealMap.keySet()) {
+      String category=theRealMap.get(s).get(0);
+      if (category.equals(majorCategoryLowercase)) {
+        String indivRatio=theRealMap.get(s).get(1);
+        float addThisRatio=parseFloat(indivRatio);
+        totalRatio+=addThisRatio;
+        ratioCount++;
+      }
+    }
+    if (ratioCount!=0) {
+      avRatio=(totalRatio/ratioCount);
+    }
+    return avRatio;
+  }
+  public Set getCategorySet() {
     categorySet=new TreeSet<String>();
-    for(String s:theRealMap.keySet()){
+    for (String s : theRealMap.keySet()) {
       categorySet.add(theRealMap.get(s).get(0));
     }
     return categorySet;
   }
-  public void sortBySalary(){
+  public void sortBySalary() {
     int numberOfCategories=getCategorySet().size();
     ArrayList<String> orderedList =new ArrayList<String>();
     /*
     next, make a list of majors, and compare the majors' salaries to one another until 
      
-    */
+     */
   }
   public String toString() {
     return ""+theRealMap;
