@@ -2,11 +2,14 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Map;
 import java.util.TreeMap;
+import java.util.Set;
+import java.util.TreeSet;
 import java.util.Scanner;
 import static java.lang.System.*;
 
-public class GradMap {
 
+public class GradMap {
+  Set<String>categorySet;
   TreeMap<String, ArrayList <String>> theRealMap=new TreeMap<String, ArrayList <String>>();
 
   public GradMap(String fileName) {
@@ -31,7 +34,41 @@ public class GradMap {
     theRest.add(""+grad.getSalary());
     theRealMap.put(grad.getMajor(), theRest);
   }
-  public String toString(){
+  public float averageSalary(String majorCategory) {
+    int totalSal=0;
+    int salCount=0;
+    float avSal=0;
+    String majorCategoryLowercase=majorCategory.toLowerCase();
+    for (String s : theRealMap.keySet()) {
+      String category=theRealMap.get(s).get(0);
+      if (category.equals(majorCategoryLowercase)) { //something wrong with this
+        String sal=theRealMap.get(s).get(2);
+        int addThisSal=parseInt(sal);
+        totalSal+=addThisSal;
+        salCount++;
+      }
+    }
+    if(salCount!=0){
+    avSal=(totalSal/salCount);
+    }
+    return avSal;
+  }
+  public Set getCategorySet(){
+    categorySet=new TreeSet<String>();
+    for(String s:theRealMap.keySet()){
+      categorySet.add(theRealMap.get(s).get(0));
+    }
+    return categorySet;
+  }
+  public void sortBySalary(){
+    int numberOfCategories=getCategorySet().size();
+    ArrayList<String> orderedList =new ArrayList<String>();
+    /*
+    next, make a list of majors, and compare the majors' salaries to one another until 
+     
+    */
+  }
+  public String toString() {
     return ""+theRealMap;
   }
 }
