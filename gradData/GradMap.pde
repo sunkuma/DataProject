@@ -87,6 +87,19 @@ public class GradMap {
      
      */
   }
+    public void bar(String majCat, float rat, int startingX, int startingY){
+    //all things will be 500 pixels long, 50 pixels tall
+    int startX=startingX;
+    int startY=startingY;
+    String category=majCat;
+    float ratio=rat;
+    fill(255,23,54);
+    rect(startX, startY, (500*ratio),10);
+    float endingOfFirst=(500*ratio);
+    fill(0);
+    rect(endingOfFirst,startY,(500-endingOfFirst),10);
+    println("got here");
+  }
   public String toString() {
     return ""+theRealMap;
   }
