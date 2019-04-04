@@ -88,7 +88,6 @@ public class GradMap {
      */
   }
     public void bar(String majCat, float rat, int startingX, int startingY){
-    //all things will be 500 pixels long, 50 pixels tall
     int startX=startingX;
     int startY=startingY;
     String category=majCat;
